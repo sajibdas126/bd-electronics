@@ -1,3 +1,9 @@
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/clerk-react";
 import { MapPin } from "lucide-react";
 import React from "react";
 import { FaCaretDown } from "react-icons/fa";
@@ -80,12 +86,22 @@ export const Navbar = () => {
             </ul>
             {/* cart section */}
             <Link to={"/cart"} className="relative">
-            <IoCartOutline className="h-7 w-7"/>
-            <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white">0</span>
+              <IoCartOutline className="h-7 w-7" />
+              <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white">
+                0
+              </span>
             </Link>
+
+            <div>
+              <SignedOut>
+                <SignInButton className="bg-red-500 text-white px-3 py-1 cursor-pointer " />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </div>
           </nav>
         </div>
-
       </div>
     </div>
   );
