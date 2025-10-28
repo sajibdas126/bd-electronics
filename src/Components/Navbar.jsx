@@ -5,13 +5,17 @@ import {
   UserButton,
 } from "@clerk/clerk-react";
 import { MapPin } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import { CgClose } from "react-icons/cg";
 import { FaCaretDown } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 
-export const Navbar = () => {
-  const location = false;
+export const Navbar = ({ location, getSelection, openDropdown , setOpenDropdown }) => {
+  
+  const toggleDropdown = () => {
+    setOpenDropdown(!openDropdown);
+  };
 
   return (
     <div className="bg-white py-3 shadow-2xl">
@@ -26,10 +30,38 @@ export const Navbar = () => {
           <div className="flex gap-1 cursor-pointer text-gray-700 items-center">
             <MapPin className="text-red-500"></MapPin>
             <span className="font-semibold">
-              {location ? <div></div> : "Add Address"}
+              {location ? (
+                <div className="-space-y-2">
+                  <p>{location.country}</p>
+                  <p>{location.city}</p>
+                  
+                </div>
+              ) : (
+                "Add Address"
+              )}
             </span>
-            <FaCaretDown className="" />
+            <FaCaretDown onClick={toggleDropdown} />
           </div>
+          {openDropdown ? (
+            <div
+              className="w-[250px] h-max shadow-2xl z-50 bg-white fixed top-16 left-60
+            border-2 border-gray-100 rounded-md"
+            >
+              <h1 className="font-semibold mb-4 text-xl flex justify-between px-2 items-center ">
+                Change Locotaion
+                <span onClick={toggleDropdown}>
+                  <CgClose />
+                </span>
+              </h1>
+              <button
+                onClick={getSelection}
+                className="bg-red-500 text-white px-3 py-1 rounded-md cursor-pointer hover:bg-red-400"
+              >
+                {" "}
+                Delect my location
+              </button>
+            </div>
+          ) : null}
         </div>
         {/* Menu section */}
         <div>
