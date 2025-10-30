@@ -1,61 +1,102 @@
-import React, { useContext, useEffect } from "react";
-import { DataContext } from "../Context/DataContext";
+import React, { useEffect } from "react";
+import { getData } from "../Context/DataContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { Category } from "./Category";
 
 function Carousel() {
-  const { data, fatchAllProducts } = useContext(DataContext);
-  console.log(data);
+  const { data, fetchAllProducts } = getData();
+
   useEffect(() => {
-    fatchAllProducts();
+    fetchAllProducts();
   }, []);
 
-  var settings = {
-    dots: true,
+  // 🔹 Custom Previous Arrow
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className={`absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer`}
+      >
+        <AiOutlineArrowLeft
+          className="text-white bg-red-500 hover:bg-gray-700 p-3 rounded-full shadow-lg transition-all"
+          size={40}
+        />
+      </div>
+    );
+  };
+
+  // 🔹 Custom Next Arrow
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className={`absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer`}
+      >
+        <AiOutlineArrowRight
+          className="text-white bg-red-500 hover:bg-gray-700 p-3 rounded-full shadow-lg transition-all"
+          size={40}
+        />
+      </div>
+    );
+  };
+
+  // 🔹 Slider Settings
+  const settings = {
+    dots: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
     infinite: true,
-    speed: 500,
+    speed: 800,
+    pauseOnHover: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   return (
-    <div>
+    <div className="relative w-fullmin-h-[400px] md:min-h-[600px]  overflow-hidden">
       <Slider {...settings}>
-        {data?.slice(0, 7).map((item, index) => {
-          return (
-            <div
-              key={index}
-              className=" bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] -z-10"
-            >
-              <div className="flex gap-10 justify-center h-[600px] items-center px-4">
-                <div className="space-y-6">
-                  <h3 className="text-red-500 font-semibold  font-sans text-sm">
-                    Powering your world the Best in Electronics
-                  </h3>
-                  <h1 className="text-4xl font-bold uppercase line-clamp-3 md:w-[500px] text-white">
-                    {item.title}
-                  </h1>
-                  <p className="md:w-[500px] line-clamp-3 text-gray-400 pr-7">
-                    {item.description}
-                  </p>
-                  <button className="bg-gradient-to-r from-red-500 to-purple-500 text-white px-3 py-2 rounded-md cursor-pointer mt-3">
-                    Shop Now
-                  </button>
-                </div>
-                {/* slider img */}
-                <div>
-                  <img src={item.image} alt="" />
-                </div>
+        {data?.slice(0, 7).map((item, index) => (
+          <div
+            key={index}
+            className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] py-10 md:py-16"
+          >
+            <div className="flex flex-col md:flex-row justify-center items-center gap-10 px-5 md:px-20">
+              {/* 🟣 Text Section */}
+              <div className="space-y-5 text-center md:text-left">
+                <h3 className="text-red-400 font-semibold text-sm">
+                  Powering your world with the best electronics
+                </h3>
+                <h1 className="text-2xl md:text-4xl font-bold text-white uppercase">
+                  {item.title}
+                </h1>
+                <p className="text-gray-300 max-w-md mx-auto md:mx-0 line-clamp-3">
+                  {item.description}
+                </p>
+                <button className="bg-gradient-to-r from-red-500 to-purple-600 text-white px-5 py-2 rounded-md hover:scale-105 transition-transform duration-300">
+                  Shop Now
+                </button>
+              </div>
+
+              {/* 🟣 Image Section */}
+              <div className="w-full md:w-1/2 flex justify-center">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="rounded-full w-[300px] md:w-[500px] object-contain shadow-2xl hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
-          );
-        })}
-
-        <div>
-          <h3>1</h3>
-        </div>
+          </div>
+        ))}
       </Slider>
+      <Category />
     </div>
   );
 }

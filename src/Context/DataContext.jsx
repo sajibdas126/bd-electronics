@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
 
 export const DataContext = createContext(null);
@@ -7,10 +7,10 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
 
   // Fetching all products from API
-  const fatchAllProducts = async () => {
+  const fetchAllProducts = async () => {
     try {
       const res = await axios.get(
-        "https://fakestoreapi.com/products/category/electronics"
+        "https://fakestoreapi.com/products/"
       );
       const products = res.data;
       const productsData = res.data.products;
@@ -35,41 +35,11 @@ export const DataProvider = ({ children }) => {
   };
 
   return (
-    <DataContext.Provider value={{ data, setData, fatchAllProducts }}>
+    <DataContext.Provider value={{ data, setData, fetchAllProducts }}>
       {children}
     </DataContext.Provider>
   );
 };
 
-// import { createContext, useState, useEffect } from "react";
-// import electronics from "../Electronics.json";
+export const getData = () => useContext(DataContext);
 
-// export const DataContext = createContext(null);
-
-// export const DataProvider = ({ children }) => {
-//   const [data, setData] = useState([]);
-
-//   const fatchAllProducts = () => {
-//     const products = electronics;
-
-//     const expanded = [];
-//     while (expanded.length <= 150) {
-//       const randomProduct =
-//         products[Math.floor(Math.random() * products.length)];
-//       expanded.push({ ...randomProduct, id: expanded.length + 1 });
-//     }
-
-//     setData(expanded);
-//     console.log("✅ 150 products loaded successfully");
-//   };
-
-//   useEffect(() => {
-//     fatchAllProducts();
-//   }, []);
-
-//   return (
-//     <DataContext.Provider value={{ data, fatchAllProducts }}>
-//       {children}
-//     </DataContext.Provider>
-//   );
-// };
