@@ -9,9 +9,7 @@ export const DataProvider = ({ children }) => {
   // Fetching all products from API
   const fetchAllProducts = async () => {
     try {
-      const res = await axios.get(
-        "https://fakestoreapi.com/products/"
-      );
+      const res = await axios.get("https://fakestoreapi.com/products/");
       const products = res.data;
       const productsData = res.data.products;
       setData(productsData);
@@ -34,12 +32,35 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  // catogary
+
+  const getUniqueCategory = (data, property) => {
+    let newVal = data?.map((curElem) => {
+      return curElem[property];
+    });
+    newVal = ["All", ...new Set(newVal)];
+    return newVal;
+  };
+  const categoryOnlyData = getUniqueCategory(data, "category");
+  const brandOnlyData = getUniqueCategory(
+    data,
+    fetchAllProducts,
+    categoryOnlyData
+  );
+
   return (
-    <DataContext.Provider value={{ data, setData, fetchAllProducts }}>
+    <DataContext.Provider
+      value={{
+        data,
+        setData,
+        fetchAllProducts,
+        categoryOnlyData,
+        brandOnlyData,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
 };
 
 export const getData = () => useContext(DataContext);
-

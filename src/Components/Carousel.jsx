@@ -60,7 +60,7 @@ function Carousel() {
   };
 
   return (
-    <div className="relative w-fullmin-h-[400px] md:min-h-[600px]  overflow-hidden">
+    <div className="relative w-full min-h-[400px] md:min-h-[600px]  overflow-hidden">
       <Slider {...settings}>
         {data?.slice(0, 7).map((item, index) => (
           <div
@@ -85,7 +85,7 @@ function Carousel() {
               </div>
 
               {/* 🟣 Image Section */}
-              <div className="w-full md:w-1/2 flex justify-center">
+              <div className="w-full md:w-1/2 flex justify-center  min-h-[400px] md:min-h-[600px]">
                 <img
                   src={item.image}
                   alt={item.title}

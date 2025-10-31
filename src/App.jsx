@@ -7,6 +7,7 @@ import Contact from "./Pages/Contact";
 import Cart from "./Pages/Cart";
 import { Navbar } from "./Components/Navbar";
 import axios from "axios";
+import { Footer } from "./Components/Footer";
 
 function App() {
   const [location, setLocation] = useState(null);
@@ -58,6 +59,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
