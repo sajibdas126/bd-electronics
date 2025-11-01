@@ -19,3 +19,11 @@
   height:100%;
   width:100%;
 }
+
+/* input carosol */
+input{
+  background-color: #ffff;
+  accent-color: red;
+  border: 1px solid #ccc;
+  color:#333 ;
+}

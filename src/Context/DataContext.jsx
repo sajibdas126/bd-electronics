@@ -45,7 +45,7 @@ export const DataProvider = ({ children }) => {
   const brandOnlyData = getUniqueCategory(
     data,
     fetchAllProducts,
-    categoryOnlyData
+    categoryOnlyData,"brand"
   );
 
   return (
