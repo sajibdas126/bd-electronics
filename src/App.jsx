@@ -16,26 +16,26 @@ function App() {
   const getLocation = async () => {
     navigator.geolocation.getCurrentPosition(async (pos) => {
       const { latitude, longitude } = pos.coords;
-      // console.log(latitude, longitude);
 
-      const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-        `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-      )}`;
+      // 🌍 Using BigDataCloud API (CORS free)
+      const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
 
       try {
         const response = await axios.get(url);
-        // console.log("API Response:", response.data);
+        console.log("API Response:", response.data);
 
-        const address = response.data?.address || {};
         const city =
-          address.city || address.town || address.village || "Unknown";
-        const country = address.country || "Unknown";
+          response.data.city ||
+          response.data.locality ||
+          response.data.principalSubdivision ||
+          "Unknown";
+        const country = response.data.countryName || "Unknown";
 
-        setLocation({ city, country }); // ✅ এখন object আকারে
+        setLocation({ city, country });
         setOpenDropdown(false);
-        // console.log(`${city}, ${country}`);
+        console.log(`${city}, ${country}`);
       } catch (error) {
-        console.log("Location fetch error:", error);
+        console.error("Location fetch error:", error);
       }
     });
   };
@@ -59,7 +59,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }

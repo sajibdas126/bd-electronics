@@ -64,6 +64,8 @@ const dynamicPage= Math.ceil(filterData?.length/8)
             </div>
           </div>
           <Pagination pageHandler={pageHandler} page={page} dynamicPage={dynamicPage}/> 
+
+          
          </>
 
         ) : (
