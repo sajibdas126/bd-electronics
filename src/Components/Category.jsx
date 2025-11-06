@@ -7,7 +7,7 @@ export const Category = () => {
 
   return (
     <div>
-      <div className="bg-[#101829]">
+      <div className="">
         <div className="max-w-7xl mx-auto flex flex-wrap gap-3 items-center justify-center sm:justify-around py-5 px-3 sm:px-6">
           {categoryOnlyData?.map((item, index) => {
             return (

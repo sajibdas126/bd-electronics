@@ -61,11 +61,11 @@ function Carousel() {
 
   return (
     <div className="relative w-full min-h-[400px] md:min-h-[600px]  overflow-hidden">
-      <Slider {...settings}>
+      <Slider {...settings} >
         {data?.slice(0, 7).map((item, index) => (
           <div
             key={index}
-            className="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] py-10 md:py-16"
+            className="bg-gradient-to-r  from-[#0f0c29] via-[#302b63] to-[#24243e] py-10 md:py-16"
           >
             <div className="flex flex-col md:flex-row justify-center items-center gap-10 px-5 md:px-20">
               {/* 🟣 Text Section */}
