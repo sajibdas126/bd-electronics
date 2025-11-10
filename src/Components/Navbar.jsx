@@ -10,6 +10,7 @@ import { CgClose } from "react-icons/cg";
 import { FaCaretDown, FaBars } from "react-icons/fa";
 import { IoCartOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
+import { useCart } from "../Context/CartContext";
 
 export const Navbar = ({
   location,
@@ -22,6 +23,8 @@ export const Navbar = ({
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
+
+  const {cartItem}= useCart()
 
   return (
     <div className="bg-white py-3 shadow-md sticky top-0 z-50">
@@ -97,7 +100,7 @@ export const Navbar = ({
           <Link to={"/cart"} className="relative">
             <IoCartOutline className="h-7 w-7" />
             <span className="bg-red-500 px-2 rounded-full absolute -top-3 -right-3 text-white text-sm">
-              0
+              {cartItem.length}
             </span>
           </Link>
 
