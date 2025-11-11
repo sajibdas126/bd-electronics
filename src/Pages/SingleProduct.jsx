@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import Loading from "../assets/Loading4.webm";
 import { Breadcrums } from '../Components/Breadcrums';
 import { IoCartOutline } from 'react-icons/io5';
+import { useCart } from '../Context/CartContext';
 
 export const SingleProduct = () => {
   const params = useParams();
   const [singleProduct, setSingleproduct] = useState(null);
-  console.log(params);
+  const {addToCart} = useCart()
+  //console.log(params);
 
   const getSingleProduct = async () => {
     try {
@@ -92,7 +94,7 @@ export const SingleProduct = () => {
               </div>
 
               <div className="flex gap-4 mt-4">
-                <button className="flex items-center gap-3 px-6 py-2 rounded-md bg-red-600 text-white hover:bg-red-700 transition">
+                <button onClick={() => addToCart(singleProduct)} className="flex items-center gap-3 px-6 py-2 rounded-md bg-red-600 text-white hover:bg-red-700 transition">
                   <IoCartOutline /> Add to Cart
                 </button>
               </div>
