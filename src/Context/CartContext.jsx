@@ -27,8 +27,10 @@ export const CartProvider = ({children})=>{
                 let newUnit =item.quantity;
                 if(action === "increase"){
                     newUnit = newUnit + 1
+                  
                 }else if(action === "decrease"){
                     newUnit = newUnit -1
+                   
                 }
                 return newUnit >0 ? {... item,quantity:newUnit }: null   
                 
