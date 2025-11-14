@@ -3,7 +3,7 @@
 A modern electronics e-commerce frontend built using **React.js**, **Tailwind CSS**, **Clerk Authentication**, **axios**, **react-slick carousel**, and **react-toastify**.
 
 ---
-
+view link= https://6917794d114926f86c691eae--serene-jalebi-00a5de.netlify.app/
 ## 🚀 Features
 
 ### ✅ Authentication (Clerk.com)
