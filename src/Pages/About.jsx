@@ -5,10 +5,10 @@ function About() {
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4 sm:px-6 lg:px-20">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8 space-y-8">
-        <h1 className="text-4xl font-bold text-center">About Zaptro</h1>
+        <h1 className="text-4xl font-bold text-center">About BdElectronics</h1>
 
         <p className="text-gray-700 text-lg">
-          Welcome to <span className="font-semibold text-red-600">Zaptro</span>,
+          Welcome to <span className="font-semibold text-red-600">BdElectronics</span>,
           your one-stop destination for the latest and greatest in electronics.
           From cutting-edge gadgets to must-have accessories, we’re here to
           power up your tech life with premium products and unbeatable service.
@@ -26,7 +26,7 @@ function About() {
 
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold text-red-600">
-            Why Choose Zaptro?
+            Why Choose BdElectronics?
           </h2>
           <ul className="list-disc pl-6 text-gray-700 space-y-2">
             <li>Top-quality electronic products from trusted brands</li>
@@ -47,11 +47,11 @@ function About() {
 
         <div className="text-center mt-10">
           <h3 className="text-xl font-semibold text-red-600 mb-2">
-            Join the Zaptro Family
+            Join the BdElectronics Family
           </h3>
           <p className="text-gray-700 mb-4">
             Whether you’re a tech enthusiast, a professional, or just looking
-            for something cool and functional — Zaptro has something for
+            for something cool and functional — BdElectronics has something for
             everyone.
           </p>
           <Link to={"/products"}>

@@ -3,6 +3,7 @@ import { getData } from "../Context/DataContext";
 import { Search } from "lucide-react";
 
 export const FilterSection = ({
+  search,
   setSearch,
   brand,
   setBrand,
@@ -23,13 +24,13 @@ export const FilterSection = ({
         <input
           type="text"
           placeholder="Search products..."
-          value={Search}
+          value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
-      {/* Category Section */}
+      {/* Category */}
       <h2 className="mt-6 mb-3 font-semibold text-lg text-gray-800 border-b pb-1">
         Category
       </h2>
@@ -41,7 +42,7 @@ export const FilterSection = ({
           >
             <input
               type="radio"
-              name={category}
+              name="category"
               checked={category === item}
               value={item}
               onChange={handleCategoryChange}
@@ -52,7 +53,7 @@ export const FilterSection = ({
         ))}
       </div>
 
-      {/* Brand Section */}
+      {/* Brand */}
       <h2 className="mt-6 mb-3 font-semibold text-lg text-gray-800 border-b pb-1">
         Brand
       </h2>
@@ -61,7 +62,7 @@ export const FilterSection = ({
         onChange={handleBrandChange}
         className="w-full p-2 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
       >
-        {brandOnlyData && brandOnlyData.length > 0 ? (
+        {brandOnlyData?.length > 0 ? (
           brandOnlyData.map((item, index) => (
             <option key={index} value={item}>
               {item}
@@ -71,19 +72,20 @@ export const FilterSection = ({
           <option disabled>Loading...</option>
         )}
       </select>
-      {/* price range */}
+
+      {/* Price Range */}
       <h2 className="mt-6 mb-3 font-semibold text-lg text-gray-800 border-b pb-1">
         Price Range
       </h2>
       <div className="flex flex-col gap-2">
-        <label htmlFor="" className="text-sm">
-          Price Renge: ${priceRange[0]} - ${priceRange[1]}{" "}
+        <label className="text-sm">
+          Price Range: ${priceRange[0]} - ${priceRange[1]}
         </label>
-        {/* reset-Filter box */}
+
         <input
           type="range"
-          min="0" max="5000"
-          name=""
+          min="0"
+          max="5000"
           value={priceRange[1]}
           onChange={(e) =>
             setPriceRange([priceRange[0], Number(e.target.value)])
@@ -91,9 +93,16 @@ export const FilterSection = ({
         />
       </div>
 
-      <button className="bg-red-500 text-white rounded-md px-3 py-1 mt-5 cursor-pointer" 
-       onClick={()=>{setSearch(''); setCategory("All"); setBrand("All"); setPriceRange([0,5000])}}
-       >
+      {/* Reset Button */}
+      <button
+        className="bg-red-500 text-white rounded-md px-3 py-1 mt-5 cursor-pointer"
+        onClick={() => {
+          setSearch("");
+          setCategory("All");
+          setBrand("All");
+          setPriceRange([0, 5000]);
+        }}
+      >
         Reset Filters
       </button>
     </div>
