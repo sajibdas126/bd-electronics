@@ -4,6 +4,7 @@ A modern electronics e-commerce frontend built using **React.js**, **Tailwind CS
 
 ---
 view link= https://6917794d114926f86c691eae--serene-jalebi-00a5de.netlify.app/
+versel=https://bd-electronics-1.vercel.app/products
 ## 🚀 Features
 
 ### ✅ Authentication (Clerk.com)
