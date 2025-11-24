@@ -1,4 +1,4 @@
-# Bd-Electronics
+# EcoShop
 
 A modern electronics e-commerce frontend built using **React.js**, **Tailwind CSS**, **Clerk Authentication**, **axios**, **react-slick carousel**, and **react-toastify**.
 
