@@ -33,7 +33,7 @@ export const Navbar = ({
         <div className="flex gap-5 items-center">
           <Link to="/">
             <h1 className="font-bold text-2xl md:text-3xl">
-              <span className="text-red-500 font-serif">Bd</span>Electronics
+              <span className="text-red-500 font-serif">Eco</span>Shop
             </h1>
           </Link>
 

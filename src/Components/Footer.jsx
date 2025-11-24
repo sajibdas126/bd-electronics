@@ -13,7 +13,7 @@ export const Footer = () => {
         {/* Brand Info */}
         <div>
            <h1 className="font-bold text-2xl md:text-3xl">
-              <span className="text-red-500 font-serif">Bd</span>Electronics
+              <span className="text-red-500 font-serif">Eco</span>Shop
             </h1>
           <p className="mt-2 text-sm">
             Powering Your World with the Best in Electronics.
@@ -21,7 +21,7 @@ export const Footer = () => {
           <p className="mt-3 text-sm">
             123 Electronics St, Style City, NY 10001
           </p>
-          <p className="text-sm">Email: support@bdelectronics.com</p>
+          <p className="text-sm">Email: support@ecoshop.com</p>
           <p className="text-sm">Phone: (123) 456-7890</p>
         </div>
 
@@ -97,7 +97,7 @@ export const Footer = () => {
 
       {/* Bottom */}
       <div className="border-t border-gray-700 mt-10 pt-5 text-center text-sm">
-        © 2025 <span className="text-red-500 font-semibold">BdElectronics</span>. All
+        © 2025 <span className="text-red-500 font-semibold">EcoShop</span>. All
         rights reserved.
       </div>
     </footer>
